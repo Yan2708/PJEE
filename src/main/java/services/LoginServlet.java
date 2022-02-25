@@ -15,7 +15,7 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/login.jsp").forward(request,response);
+        getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request,response);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/menu");
         }else{
             request.setAttribute("error", "identifiant ou mdp incorrect");
-            getServletContext().getRequestDispatcher("/login.jsp").forward(request,response);
+            getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request,response);
         }
 
     }

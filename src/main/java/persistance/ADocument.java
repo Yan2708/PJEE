@@ -4,12 +4,13 @@ import mediatek2022.Document;
 import mediatek2022.Utilisateur;
 
 public abstract class ADocument implements Document {
-
+    private int id;
     private String name;
-    private int idEmprunteur;
+    private Integer idEmprunteur;
 
-    public ADocument(String name,int emprunt) {
+    public ADocument(String name,int emprunt, int id) {
         this.name = name;
+        this.id=id;
         idEmprunteur=emprunt;
     }
 
@@ -20,9 +21,10 @@ public abstract class ADocument implements Document {
 
     @Override
     public void emprunt(Utilisateur u) throws Exception {
-        if (idEmprunteur!=0)
-            throw new Exception("le libre est déjà emprunté");
+        if (!disponible())
+            throw new Exception("le livre est déjà emprunté");
         idEmprunteur= (int) u.data()[0];
+        DbManager.emprunt(this,(int)u.data()[0]);
     }
 
     @Override
@@ -31,4 +33,9 @@ public abstract class ADocument implements Document {
     }
 
     public abstract String getType();
+
+    @Override
+    public String toString() {
+        return id+" "+name +" "+idEmprunteur;
+    }
 }

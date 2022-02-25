@@ -20,14 +20,10 @@ public class MenuServlet extends HttpServlet {
             return;
         }
         if (user.isBibliothecaire()){
-            getServletContext().getRequestDispatcher("/Bibliothecaire.jsp").forward(request,response);
+            getServletContext().getRequestDispatcher("/WEB-INF/Bibliothecaire.jsp").forward(request,response);
             return;
         }
-        getServletContext().getRequestDispatcher("/Client.jsp").forward(request,response);
+        getServletContext().getRequestDispatcher("/WEB-INF/Client.jsp").forward(request,response);
     }
 
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    }
 }
