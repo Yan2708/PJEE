@@ -11,10 +11,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Menu</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./js/style.css">
 </head>
-<body>
-<div class="level">
+<body class="has-background-info-light">
+<jsp:include page="./Navbar.jsp"/>
+<div class="level ">
     <div class="level-item is-flex-direction-column">
         <%
             User user = (User) session.getAttribute("user");

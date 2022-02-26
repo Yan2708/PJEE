@@ -4,6 +4,8 @@ import mediatek2022.Document;
 import mediatek2022.Mediatheque;
 import mediatek2022.PersistentMediatheque;
 import mediatek2022.Utilisateur;
+import persistance.DAO.DocumentDAO;
+import persistance.DAO.UserDAO;
 
 import java.util.List;
 
@@ -31,15 +33,14 @@ public class MediathequeData implements PersistentMediatheque {
 	// renvoie la liste de tous les documents disponibles de la médiathèque
 	@Override
 	public List<Document> tousLesDocumentsDisponibles() {
-
-		return DbManager.tousLesDocumentsDisponibles();
+		return new DocumentDAO().tousLesDocumentsDisponibles();
 	}
 
 	// va récupérer le User dans la BD et le renvoie
 	// si pas trouvé, renvoie null
 	@Override
 	public Utilisateur getUser(String login, String password) {
-		return DbManager.getUser(login,password);
+		return new UserDAO().getUser(login, password);
 	};
 
 	// va récupérer le document de numéro numDocument dans la BD
@@ -47,12 +48,12 @@ public class MediathequeData implements PersistentMediatheque {
 	// si pas trouvé, renvoie null
 	@Override
 	public Document getDocument(int numDocument) {
-		return DbManager.getDocument(numDocument);
+		return new DocumentDAO().getDocument(numDocument);
 	}
 
 	@Override
 	public void ajoutDocument(int type, Object... args) {
-		DbManager.ajoutDocument(type,args);
+		new DocumentDAO().ajoutDocument(type,args);
 	}
 
 

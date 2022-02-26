@@ -11,11 +11,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AjoutDocument</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./js/style.css">
 </head>
-<body>
+<body  class="has-background-info-light">
 
-<div class="m-3">
+<div class="m-3 ">
+    <jsp:include page="./Navbar.jsp"/>
     <h1 class="title"> Ajouter un document </h1>
     <form method="post" action="/create"  id="ajoutForm" class="form">
         <div class="field">
@@ -32,7 +33,7 @@
         </div>
         <div class="field">
             <label class="label">Type</label>
-            <div class="control">
+            <div class="select">
                 <select name="type" form="ajoutForm">
                     <option value="1">Livre</option>
                     <option value="2">DVD</option>

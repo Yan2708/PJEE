@@ -35,7 +35,7 @@ public class RetourServlet extends HttpServlet {
         Document document = Mediatheque.getInstance().getDocument(id);
         document.retour();
         request.setAttribute("success","le document est retourné!");
-        getServletContext().getRequestDispatcher("/WEB-INF/Ajout.jsp").forward(request,response);
+        getServletContext().getRequestDispatcher("/WEB-INF/Retour.jsp").forward(request,response);
 
     }
 }

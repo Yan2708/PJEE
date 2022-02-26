@@ -10,11 +10,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./js/style.css">
     <title>Mediatheque | login</title>
 </head>
-<body>
-<div class="m-3">
+<body class="has-background-info-light">
+<div class="level">
+    <div class="level-item is-flex-direction-column">
     <h1 class="title">Médiathèque</h1>
     <form method="post" action="/login">
         <div class="field">
@@ -32,6 +33,7 @@
         <p class="has-text-danger">${error}</p>
         <button class="button has-background-link has-text-white-bis" type="submit">Se connecter</button>
     </form>
+</div>
 </div>
 </body>
 </html>

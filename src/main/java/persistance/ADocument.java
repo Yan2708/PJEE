@@ -2,6 +2,7 @@ package persistance;
 
 import mediatek2022.Document;
 import mediatek2022.Utilisateur;
+import persistance.DAO.DocumentDAO;
 
 public abstract class ADocument implements Document {
     private int id;
@@ -21,15 +22,21 @@ public abstract class ADocument implements Document {
 
     @Override
     public void emprunt(Utilisateur u) throws Exception {
-        if (!disponible())
-            throw new Exception("le livre est déjà emprunté");
-        idEmprunteur= (int) u.data()[0];
-        DbManager.emprunt(this,(int)u.data()[0]);
+        synchronized (this){
+            if (!disponible())
+                throw new Exception("le livre est déjà emprunté");
+            idEmprunteur= (int) u.data()[0];
+            new DocumentDAO().emprunt(this,idEmprunteur);
+        }
+
     }
 
     @Override
     public void retour() {
-        idEmprunteur=0;
+        synchronized (this){
+            idEmprunteur=0;
+            new DocumentDAO().retour(this);
+        }
     }
 
     public abstract String getType();

@@ -6,8 +6,8 @@
 <%
     Utilisateur user = (Utilisateur) session.getAttribute("user");
     response.setContentType("text/html");
-
-    StringBuilder sb = new StringBuilder("<select name=\"documentSelect\">");
+    response.setCharacterEncoding("UTF-8");
+    StringBuilder sb = new StringBuilder("<select name=\"id\">");
     List<Document> documents = Mediatheque.getInstance().tousLesDocumentsDisponibles();
     for(Document doc:documents){
         if (!doc.disponible())

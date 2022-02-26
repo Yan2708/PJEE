@@ -4,6 +4,7 @@
 
 <%
     response.setContentType("text/html");
+    response.setCharacterEncoding("UTF-8");
     StringBuilder sb = new StringBuilder("<select name=\"documentSelect\">");
     List<Document> documents = Mediatheque.getInstance().tousLesDocumentsDisponibles();
     for(Document doc:documents){
