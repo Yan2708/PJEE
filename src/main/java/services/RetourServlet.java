@@ -16,7 +16,7 @@ public class RetourServlet extends HttpServlet {
         HttpSession session= request.getSession(true);
         Utilisateur user = (Utilisateur) session.getAttribute("user");
         if (user==null||user.isBibliothecaire()){
-            response.sendRedirect("/login");
+            response.sendRedirect("/PJEE-1.0-SNAPSHOT/login");
         }else{
             getServletContext().getRequestDispatcher("/WEB-INF/Retour.jsp").forward(request,response);
         }
@@ -27,7 +27,7 @@ public class RetourServlet extends HttpServlet {
         HttpSession session= request.getSession(true);
         Utilisateur user = (Utilisateur) session.getAttribute("user");
         if (user==null||user.isBibliothecaire()){
-            response.sendRedirect("/login");
+            response.sendRedirect("/PJEE-1.0-SNAPSHOT/login");
         }
 
         int id = Integer.parseInt(request.getParameter("id"));

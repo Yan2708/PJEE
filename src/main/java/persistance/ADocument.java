@@ -28,7 +28,6 @@ public abstract class ADocument implements Document {
             idEmprunteur= (int) u.data()[0];
             new DocumentDAO().emprunt(this,idEmprunteur);
         }
-
     }
 
     @Override
@@ -43,6 +42,6 @@ public abstract class ADocument implements Document {
 
     @Override
     public String toString() {
-        return id+" "+name +" "+idEmprunteur;
+        return id+" "+name;
     }
 }

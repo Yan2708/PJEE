@@ -18,7 +18,7 @@
 <div class="m-3 ">
     <jsp:include page="./Navbar.jsp"/>
     <h1 class="title"> Ajouter un document </h1>
-    <form method="post" action="/create"  id="ajoutForm" class="form">
+    <form method="post" action="${pageContext.request.contextPath}/create"  id="ajoutForm" class="form">
         <div class="field">
             <label class="label">Titre</label>
             <div class="control">

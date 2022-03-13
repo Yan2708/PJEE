@@ -33,14 +33,18 @@ public class MediathequeData implements PersistentMediatheque {
 	// renvoie la liste de tous les documents disponibles de la médiathèque
 	@Override
 	public List<Document> tousLesDocumentsDisponibles() {
-		return new DocumentDAO().tousLesDocumentsDisponibles();
+		synchronized (this){
+			return new DocumentDAO().tousLesDocumentsDisponibles();
+		}
 	}
 
 	// va récupérer le User dans la BD et le renvoie
 	// si pas trouvé, renvoie null
 	@Override
 	public Utilisateur getUser(String login, String password) {
-		return new UserDAO().getUser(login, password);
+		synchronized (this){
+			return new UserDAO().getUser(login, password);
+		}
 	};
 
 	// va récupérer le document de numéro numDocument dans la BD
@@ -48,12 +52,16 @@ public class MediathequeData implements PersistentMediatheque {
 	// si pas trouvé, renvoie null
 	@Override
 	public Document getDocument(int numDocument) {
-		return new DocumentDAO().getDocument(numDocument);
+		synchronized (this){
+			return new DocumentDAO().getDocument(numDocument);
+		}
 	}
 
 	@Override
 	public void ajoutDocument(int type, Object... args) {
-		new DocumentDAO().ajoutDocument(type,args);
+		synchronized (this){
+			new DocumentDAO().ajoutDocument(type,args);
+		}
 	}
 
 

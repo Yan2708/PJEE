@@ -22,8 +22,8 @@
         %>
         <h1 class="title m-3">Bienvenue <%=user.name()%></h1>
         <div>
-            <a href="/emprunt" class="button has-background-link has-text-white-bis">Emprunter un document</a>
-            <a href="/retour" class="button has-background-link has-text-white-bis">Retourner un document</a>
+            <a href="${pageContext.request.contextPath}/emprunt" class="button has-background-link has-text-white-bis">Emprunter un document</a>
+            <a href="${pageContext.request.contextPath}/retour" class="button has-background-link has-text-white-bis">Retourner un document</a>
         </div>
     </div>
 </div>

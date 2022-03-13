@@ -1,12 +1,13 @@
 package services;
 
-import mediatek2022.Mediatheque;
 import mediatek2022.Utilisateur;
-import persistance.User;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "MenuServlet", value = "/menu")
@@ -16,7 +17,7 @@ public class MenuServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         Utilisateur user = (Utilisateur) session.getAttribute("user");
         if (user==null){
-            response.sendRedirect("/login");
+            response.sendRedirect("/PJEE-1.0-SNAPSHOT/login");
             return;
         }
         if (user.isBibliothecaire()){

@@ -16,7 +16,7 @@ public class DocumentDAO {
     public List<Document> tousLesDocumentsDisponibles() {
         ArrayList<Document> res = new ArrayList<>();
         try {
-            PreparedStatement ps = DbManager.connection.prepareStatement("select * from document");
+            PreparedStatement ps = DbManager.getConnection().prepareStatement("select * from document");
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 switch (rs.getString("type")){
@@ -38,7 +38,7 @@ public class DocumentDAO {
 
     public Document getDocument(int numDocument) {
         try {
-            PreparedStatement ps = DbManager.connection.prepareStatement("select * from document where id=?");
+            PreparedStatement ps = DbManager.getConnection().prepareStatement("select * from document where id=?");
             ps.setInt(1,numDocument);
             ResultSet rs = ps.executeQuery();
             if (rs.next()){
@@ -47,7 +47,6 @@ public class DocumentDAO {
                         return (new Dvd(rs.getString("name"),rs.getInt("emprunteur"),rs.getInt("id")));
                     case "livre":
                         return (new Livre(rs.getString("name"),rs.getInt("emprunteur"),rs.getInt("id")));
-
                 }
             }
             ps.close();
@@ -63,7 +62,7 @@ public class DocumentDAO {
         // args [1] --> l'auteur
         // etc... variable suivant le type de document
         try {
-            PreparedStatement ps = DbManager.connection.prepareStatement("insert into document (type,name,auteur) values (?,?,?)");
+            PreparedStatement ps = DbManager.getConnection().prepareStatement("insert into document (type,name,auteur) values (?,?,?)");
             ps.setString(2, (String) args[0]);
             ps.setString(3, (String) args[1]);
             switch (type){
@@ -84,7 +83,7 @@ public class DocumentDAO {
 
     public void emprunt(Document doc, int id){
         try {
-            PreparedStatement ps = DbManager.connection.prepareStatement("update document set emprunteur=? where id=?");
+            PreparedStatement ps = DbManager.getConnection().prepareStatement("update document set emprunteur=? where id=?");
             ps.setInt(1,id);
             ps.setInt(2,Integer.parseInt(doc.toString().split(" ")[0]));
             ps.executeUpdate();
@@ -96,7 +95,7 @@ public class DocumentDAO {
 
     public void retour(Document doc){
         try {
-            PreparedStatement ps = DbManager.connection.prepareStatement("update document set emprunteur=null where id=?");
+            PreparedStatement ps = DbManager.getConnection().prepareStatement("update document set emprunteur=null where id=?");
             ps.setInt(1,Integer.parseInt(doc.toString().split(" ")[0]));
             ps.executeUpdate();
             ps.close();

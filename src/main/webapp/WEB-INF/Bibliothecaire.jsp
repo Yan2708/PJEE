@@ -16,7 +16,7 @@
         User user = (User) session.getAttribute("user");
     %>
     <h1 class="title m-3">Bienvenue <%=user.name()%></h1>
-    <a href="/create" class="button has-background-link has-text-white-bis">Ajouter un document</a>
+    <a href="${pageContext.request.contextPath}/create" class="button has-background-link has-text-white-bis">Ajouter un document</a>
 </div>
 </div>
 </body>

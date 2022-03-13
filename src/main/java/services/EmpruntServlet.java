@@ -16,7 +16,7 @@ public class EmpruntServlet extends HttpServlet {
         HttpSession session= request.getSession(true);
         Utilisateur user = (Utilisateur) session.getAttribute("user");
         if (user==null|| user.isBibliothecaire()){
-            response.sendRedirect("/login");
+            response.sendRedirect("${pageContext.request.contextPath}/login");
         }else{
             getServletContext().getRequestDispatcher("/WEB-INF/Emprunt.jsp").forward(request,response);
         }
@@ -27,7 +27,7 @@ public class EmpruntServlet extends HttpServlet {
         HttpSession session= request.getSession(true);
         Utilisateur user = (Utilisateur) session.getAttribute("user");
         if (user==null || user.isBibliothecaire()){
-            response.sendRedirect("/login");
+            response.sendRedirect("${pageContext.request.contextPath}/login");
             return;
         }
         int numDoc = Integer.parseInt(request.getParameter("documentSelect"));

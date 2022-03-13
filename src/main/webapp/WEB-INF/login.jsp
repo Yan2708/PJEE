@@ -17,7 +17,7 @@
 <div class="level">
     <div class="level-item is-flex-direction-column">
     <h1 class="title">Médiathèque</h1>
-    <form method="post" action="/login">
+    <form method="post" action="${pageContext.request.contextPath}/login">
         <div class="field">
             <label class="label">Identifiant</label>
             <div class="control">

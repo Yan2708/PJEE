@@ -14,7 +14,7 @@ public class UserDAO {
     public Utilisateur getUser(String login, String password) {
         try {
             Connection connection;
-            PreparedStatement ps = DbManager.connection.prepareStatement("select * from user where username=? and password=?");
+            PreparedStatement ps = DbManager.getConnection().prepareStatement("select * from user where username=? and password=?");
             ps.setString(1,login);
             ps.setString(2,password);
             ResultSet r = ps.executeQuery();

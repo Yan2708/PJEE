@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         Utilisateur user = Mediatheque.getInstance().getUser(username, password);
         if (user != null) {
             session.setAttribute("user",user);
-            response.sendRedirect("/menu");
+            response.sendRedirect("/PJEE-1.0-SNAPSHOT/menu");
         }else{
             request.setAttribute("error", "identifiant ou mdp incorrect");
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request,response);
